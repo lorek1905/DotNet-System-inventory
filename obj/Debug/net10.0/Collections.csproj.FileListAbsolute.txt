@@ -1,0 +1,14 @@
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\bin\Debug\net10.0\Collections.exe
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\bin\Debug\net10.0\Collections.deps.json
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\bin\Debug\net10.0\Collections.runtimeconfig.json
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\bin\Debug\net10.0\Collections.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\bin\Debug\net10.0\Collections.pdb
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\refint\Collections.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.pdb
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.genruntimeconfig.cache
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\ref\Collections.dll
