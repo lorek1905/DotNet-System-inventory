@@ -39,28 +39,7 @@ public class ProdutoServices
     }
 
 
-    public void BuscarProduto()
-    {
 
-        Console.WriteLine("Digite o nome do produto que deseja buscar:");
-        string nome = Console.ReadLine();
-
-        Produto encontrado = BuscarPorNome(nome);
-
-        if (encontrado == null)
-        {
-            Console.WriteLine("Produto não encontrado");
-        }
-        else
-        {
-            Console.WriteLine($"Produto: {encontrado.Nome}");
-            Console.WriteLine($"Quant. em estoque: {encontrado.Estoque}");
-            Console.WriteLine($"Valor: {encontrado.Valor}");
-            Console.WriteLine();
-        }
-
-
-    }
 
 
 

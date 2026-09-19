@@ -36,7 +36,7 @@ public class Program
                     RmvProduto();
                     break;
                 case 4:
-                    produtoServices.BuscarProduto();
+                    BuscarProduto();
                     break;
                 case 5:
                     /*AlterarEstoque();*/
@@ -155,6 +155,28 @@ public class Program
 
     }
 
+    static void BuscarProduto()
+    {
+
+        Console.WriteLine("Digite o nome do produto que deseja buscar:");
+        string nome = Console.ReadLine();
+
+        Produto encontrado = produtoServices.BuscarPorNome(nome);
+
+        if (encontrado == null)
+        {
+            Console.WriteLine("Produto não encontrado");
+        }
+        else
+        {
+            Console.WriteLine($"Produto: {encontrado.Nome}");
+            Console.WriteLine($"Quant. em estoque: {encontrado.Estoque}");
+            Console.WriteLine($"Valor: {encontrado.Valor}");
+            Console.WriteLine();
+        }
+
+
+    }
 
     /*
         static void AlterarEstoque()
