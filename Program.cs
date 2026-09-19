@@ -27,13 +27,13 @@ public class Program
             switch (opcao)
             {
                 case 1:
-                    produtoServices.AdicinoarProdutos();
+                    AddProduto();
                     break;
                 case 2:
-                    produtoServices.ListarProdutos();
+                    ListarProdt();
                     break;
                 case 3:
-                    produtoServices.RemoverProduto();
+                    RmvProduto();
                     break;
                 case 4:
                     produtoServices.BuscarProduto();
@@ -50,6 +50,110 @@ public class Program
     }
 
     static ProdutoServices produtoServices = new ProdutoServices();
+
+    static void AddProduto()
+    {
+
+
+        Console.WriteLine("Digite o nome do produto: ");
+        string nome = Console.ReadLine();
+        do
+        {
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                Console.WriteLine("Nome invalido, digite novamente");
+                nome = Console.ReadLine();
+            }
+        } while (string.IsNullOrWhiteSpace(nome));
+
+        Produto existe = produtoServices.BuscarPorNome(nome);
+
+        if (existe == null)
+        {
+            Console.WriteLine("Digite a quantidade em estoque");
+            int quant;
+            while (!int.TryParse(Console.ReadLine(), out quant) || quant < 0)
+            {
+                Console.Write("Valor inválido! Digite apenas números inteiros: ");
+            }
+
+
+            Console.WriteLine("Digite o valor do produto: ");
+            decimal valor;
+            while (!decimal.TryParse(Console.ReadLine(), out valor) || valor < 0)
+            {
+                Console.WriteLine("Valor invalido! Digite novamente");
+            }
+
+            Produto novoProduto = new Produto(nome, quant, valor);
+
+            produtoServices.AdicinoarProdutos(novoProduto);
+
+        }
+        else
+        {
+            Console.WriteLine("Produto já existe em cadastro!");
+        }
+    }
+
+    static void RmvProduto()
+    {
+        Console.WriteLine("Digite o nome do produto que deseja remover:");
+        string nome = Console.ReadLine();
+
+        Produto encontrado = produtoServices.BuscarPorNome(nome);
+
+
+        if (encontrado != null)
+        {
+            MostrarProduto(encontrado);
+            Console.WriteLine("Deseja remover este produto? ");
+            Console.WriteLine();
+            Console.WriteLine("1 - sim");
+            Console.WriteLine("2 - não");
+
+
+
+            int escolha;
+            while (!int.TryParse(Console.ReadLine(), out escolha) || escolha > 2 || escolha < 1)
+            {
+                Console.WriteLine("Valor invalido! Digite novamente");
+            }
+            produtoServices.RemoverProduto(encontrado);
+
+            if (escolha == 1)
+            {
+                produtoServices.RemoverProduto(encontrado);
+                Console.WriteLine("Produto removido com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Operação cancelada.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("ERRO - PRODUTO NÃO REGISTRADO");
+        }
+    }
+
+    static void MostrarProduto(Produto produto)
+    {
+        Console.WriteLine();
+        Console.WriteLine($"Produto: {produto.Nome}");
+        Console.WriteLine($"Quant. em estoque: {produto.Estoque}");
+        Console.WriteLine($"Valor: {produto.Valor}");
+        Console.WriteLine();
+    }
+
+    static void ListarProdt()
+    {
+        foreach (Produto produto in produtoServices.ListarProdutos())
+        {
+            MostrarProduto(produto);
+        }
+
+    }
 
 
     /*

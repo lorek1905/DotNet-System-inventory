@@ -12,3 +12,4 @@ C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\ne
 C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.pdb
 C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\ref\Collections.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\meus treinos\Collections\obj\Debug\net10.0\Collections.sourcelink.json
