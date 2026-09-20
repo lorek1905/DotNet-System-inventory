@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class ProdutoRepository
+public class ProdutoRepository : IProdutoRepositoriy
 {
     private List<Produto> ListaDeProdutos = new List<Produto>();
 

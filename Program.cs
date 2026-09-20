@@ -49,7 +49,10 @@ public class Program
         } while (opcao != 6);
     }
 
-    static ProdutoServices produtoServices = new ProdutoServices();
+    static ProdutoRepository produtoRepository = new ProdutoRepository();
+    static ProdutoServices produtoServices = new ProdutoServices(produtoRepository);
+
+
 
     static void AddProduto()
     {

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 
 public class ProdutoServices
 {
-    static ProdutoRepository produtoRepository = new ProdutoRepository();
+    private IProdutoRepositoriy produtoRepository;
 
-
+    public ProdutoServices(IProdutoRepositoriy produtoRepository)
+    {
+        this.produtoRepository = produtoRepository;
+    }
 
     public IReadOnlyList<Produto> ListarProdutos()
     {
