@@ -39,7 +39,7 @@ public class Program
                     BuscarProduto();
                     break;
                 case 5:
-                    /*AlterarEstoque();*/
+                    AlterarEstq();
                     break;
                 case 6:
                     Console.WriteLine("Programa encerrado");
@@ -87,7 +87,7 @@ public class Program
 
             Produto novoProduto = new Produto(nome, quant, valor);
 
-            produtoServices.AdicinoarProdutos(novoProduto);
+            produtoServices.AdicionarProdutos(novoProduto);
 
         }
         else
@@ -119,7 +119,6 @@ public class Program
             {
                 Console.WriteLine("Valor invalido! Digite novamente");
             }
-            produtoServices.RemoverProduto(encontrado);
 
             if (escolha == 1)
             {
@@ -178,62 +177,61 @@ public class Program
 
     }
 
-    /*
-        static void AlterarEstoque()
-        {
-            Console.WriteLine("Digite o nome do produto que deseja alterar: ");
-            string nome = Console.ReadLine();
-            Produto produto = BuscarPorNome(nome);
+    static void AlterarEstq()
+    {
+        Console.WriteLine("Digite o nome do produto que deseja alterar: ");
+        string nome = Console.ReadLine();
+        Produto produto = produtoServices.BuscarPorNome(nome);
 
+        if (produto == null)
+        {
+            Console.WriteLine("ERRO - Produto não encontrado!");
+        }
+        else
+        {
             MostrarProduto(produto);
 
-            if (produto == null)
+            Console.WriteLine("Qual operação deseja fazer?");
+            Console.WriteLine("1 - Adicionar quantidade ");
+            Console.WriteLine("2 - Remover quantidade");
+            int escolha;
+            while (!int.TryParse(Console.ReadLine(), out escolha) || escolha < 1 || escolha > 2)
             {
-                Console.WriteLine("ERRO - Produto não encontrado!");
-            }
-            else
-            {
+                Console.WriteLine("Escolha invalida!");
+
                 Console.WriteLine("Qual operação deseja fazer?");
                 Console.WriteLine("1 - Adicionar quantidade ");
                 Console.WriteLine("2 - Remover quantidade");
-                int escolha;
-                while (!int.TryParse(Console.ReadLine(), out escolha) || escolha < 1 || escolha > 2)
-                {
-                    Console.WriteLine("Escolha invalida!");
-
-                    Console.WriteLine("Qual operação deseja fazer?");
-                    Console.WriteLine("1 - Adicionar quantidade ");
-                    Console.WriteLine("2 - Remover quantidade");
-                }
-
-                if (escolha == 1)
-                {
-                    Console.WriteLine("Digite a quantidade que deseja adicionar: ");
-                    int quant;
-
-                    while (!int.TryParse(Console.ReadLine(), out quant) || quant < 0)
-                    {
-                        Console.WriteLine("Valor invalido! Digite novamente");
-                    }
-                    produto.Estoque += quant;
-
-                    Console.WriteLine($"Quantidade adicionada! Estoque atual: {produto.Estoque}");
-                }
-                else
-                {
-                    Console.WriteLine("Digite a quantidade que deseja remover: ");
-                    int quant;
-
-                    while (!int.TryParse(Console.ReadLine(), out quant) || quant > produto.Estoque || quant < 0)
-                    {
-                        Console.WriteLine("Valor invelido! Digite novamente");
-                    }
-                    produto.Estoque -= quant;
-
-                    Console.WriteLine($"Quantidade removida! Estoque atual: {produto.Estoque}");
-                }
-
             }
+
+            if (escolha == 1)
+            {
+                Console.WriteLine("Digite a quantidade que deseja adicionar: ");
+                int quant;
+
+                while (!int.TryParse(Console.ReadLine(), out quant) || quant < 0)
+                {
+                    Console.WriteLine("Valor invalido! Digite novamente");
+                }
+                produtoServices.AlterarEstoque(produto, quant);
+
+                Console.WriteLine($"Quantidade adicionada! Estoque atual: {produto.Estoque}");
+            }
+            else
+            {
+                Console.WriteLine("Digite a quantidade que deseja remover: ");
+                int quant;
+
+                while (!int.TryParse(Console.ReadLine(), out quant) || quant > produto.Estoque || quant < 0)
+                {
+                    Console.WriteLine("Valor invalido! Digite novamente");
+                }
+                quant -= quant * 2;
+                produtoServices.AlterarEstoque(produto, quant);
+
+                Console.WriteLine($"Quantidade removida! Estoque atual: {produto.Estoque}");
+            }
+
         }
-    */
+    }
 }
