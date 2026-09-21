@@ -7,8 +7,12 @@ public class ProgramClient
     static ClientRepository clientRepository = new ClientRepository();
     static ClientServices clientServices = new ClientServices(clientRepository);
 
+    static void Main()
+    {
 
-    public void Cadartrar()
+    }
+
+    public void Cadastrar()
     {
         Console.WriteLine("Digite o nome do cliente");
         string nome = Console.ReadLine();
