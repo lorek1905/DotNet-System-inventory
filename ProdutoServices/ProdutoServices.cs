@@ -5,7 +5,7 @@ public class ProdutoServices
 {
     private IProdutoRepositoriy produtoRepository;
 
-    public ProdutoServices(IProdutoRepositoriy produtoRepository)
+    public ProdutoServices(IProdutoRepositoriy produtoRepository)//construtor
     {
         this.produtoRepository = produtoRepository;
     }
@@ -20,9 +20,20 @@ public class ProdutoServices
         return produtoRepository.Buscar(nome);
     }
 
-    public void AdicionarProdutos(Produto novoProduto)
+    public bool AdicionarProdutos(Produto novoProduto)
     {
-        produtoRepository.Adicionar(novoProduto);
+        bool existe = false;
+
+        Produto produdo = BuscarPorNome(novoProduto.Nome);
+        if (produdo == null)
+        {
+            produtoRepository.Adicionar(novoProduto);
+            return existe;
+        }
+        else
+        {
+            return existe = true;
+        }
     }
 
     public void RemoverProduto(Produto produto)
@@ -30,13 +41,14 @@ public class ProdutoServices
         produtoRepository.Remover(produto);
     }
 
-    public void AlterarEstoque(Produto produto, int quant)
+    public bool AlterarEstoque(Produto produto, int quant)
     {
+        if (produto.Estoque + quant < 0)
+        {
+            return false;
+        }
         produtoRepository.AlteracaoEstoque(produto, quant);
+        return true;
     }
-
-
-
-
 
 }

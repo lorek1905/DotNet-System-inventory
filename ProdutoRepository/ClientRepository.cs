@@ -35,4 +35,12 @@ public class ClientRepository : IClientRepository
         return encontrado;
     }
 
+    public void AlterarEmail(Client client, string novoEmail)
+    {
+        client.EMail = novoEmail;
+    }
+    public void AlterarTel(Client client, string novoTel)
+    {
+        client.Telefone = novoTel;
+    }
 }

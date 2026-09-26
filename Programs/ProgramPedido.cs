@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class ProgramPedido
 {
-    static void Main()
+    static void B()
     {
 
     }

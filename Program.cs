@@ -6,6 +6,8 @@ public class Program
 {
     static void Main(String[] args)
     {
+        ProgramClient.TestarCadastro();
+
         int opcao;
         do
         {
@@ -57,8 +59,6 @@ public class Program
 
     static void AddProduto()
     {
-
-
         Console.WriteLine("Digite o nome do produto: ");
         string nome = Console.ReadLine();
         do
@@ -70,34 +70,35 @@ public class Program
             }
         } while (string.IsNullOrWhiteSpace(nome));
 
-        Produto existe = produtoServices.BuscarPorNome(nome);
-
-        if (existe == null)
+        Console.WriteLine("Digite a quantidade em estoque");
+        int quant;
+        while (!int.TryParse(Console.ReadLine(), out quant) || quant < 0)
         {
-            Console.WriteLine("Digite a quantidade em estoque");
-            int quant;
-            while (!int.TryParse(Console.ReadLine(), out quant) || quant < 0)
-            {
-                Console.Write("Valor inválido! Digite apenas números inteiros: ");
-            }
-
-
-            Console.WriteLine("Digite o valor do produto: ");
-            decimal valor;
-            while (!decimal.TryParse(Console.ReadLine(), out valor) || valor < 0)
-            {
-                Console.WriteLine("Valor invalido! Digite novamente");
-            }
-
-            Produto novoProduto = new Produto(nome, quant, valor);
-
-            produtoServices.AdicionarProdutos(novoProduto);
-
+            Console.Write("Valor inválido! Digite apenas números inteiros: ");
         }
-        else
+
+        Console.WriteLine("Digite o valor do produto: ");
+        decimal valor;
+        while (!decimal.TryParse(Console.ReadLine(), out valor) || valor < 0)
+        {
+            Console.WriteLine("Valor invalido! Digite novamente");
+        }
+
+        Produto novoProduto = new Produto(nome, quant, valor);
+
+        bool verificar = produtoServices.AdicionarProdutos(novoProduto);
+
+        if (verificar == true)
         {
             Console.WriteLine("Produto já existe em cadastro!");
         }
+        else
+        {
+            Console.WriteLine("Produto cadastrado com sucesso!");
+
+            MostrarProduto(novoProduto);
+        }
+
     }
 
     static void RmvProduto()
@@ -226,14 +227,23 @@ public class Program
                 Console.WriteLine("Digite a quantidade que deseja remover: ");
                 int quant;
 
-                while (!int.TryParse(Console.ReadLine(), out quant) || quant > produto.Estoque || quant < 0)
+                while (!int.TryParse(Console.ReadLine(), out quant) || quant < 0)
                 {
                     Console.WriteLine("Valor invalido! Digite novamente");
                 }
-                quant -= quant * 2;
-                produtoServices.AlterarEstoque(produto, quant);
+                quant = -quant;
 
-                Console.WriteLine($"Quantidade removida! Estoque atual: {produto.Estoque}");
+                bool remocaoFeita = produtoServices.AlterarEstoque(produto, quant);
+
+                if (remocaoFeita == true)
+                {
+                    Console.WriteLine($"Quantidade removida! Estoque atual: {produto.Estoque}");
+                }
+                else
+                {
+                    Console.WriteLine("ERRO - QUANTIDADE EM ESTOQUE MENOR QUE QUANTIDADE SOLICITADA");
+                }
+
             }
 
         }

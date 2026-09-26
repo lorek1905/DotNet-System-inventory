@@ -10,4 +10,8 @@ public interface IClientRepository
     public IReadOnlyList<Client> Listar();
 
     public Client BuscarCliente(string email);
+
+    public void AlterarEmail(Client client, string novoEmail);
+
+    public void AlterarTel(Client client, string novoTel);
 }

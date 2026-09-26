@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class ClientServices
 {
@@ -8,9 +9,19 @@ public class ClientServices
     {
         this.clientRepository = clientRepository;
     }
-    public void AdiconarCliente(Client client)
+    public bool AdiconarCliente(Client client)
     {
-        clientRepository.AddCliente(client);
+        Client verificarExiste = BuscarCliente(client.EMail);
+
+        if (verificarExiste == null)
+        {
+            clientRepository.AddCliente(client);
+            return false;
+        }
+
+        return true;
+
+
     }
 
     public void RemoverCliente(Client client)
@@ -27,4 +38,27 @@ public class ClientServices
     {
         return clientRepository.BuscarCliente(email);
     }
+
+    public void AlterarEmail(Client client, string novoEmail)
+    {
+        clientRepository.AlterarEmail(client, novoEmail);
+    }
+
+    public void AlterarTel(Client client, string novoTel)
+    {
+        clientRepository.AlterarEmail(client, novoTel);
+    }
+
+
+    public bool EmailValido(string email)
+    {
+        string formato = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        return Regex.IsMatch(email, formato);
+    }
+
+    public bool TelefoneValido(string telefone)
+    {
+        return Regex.IsMatch(telefone, @"^\d{11}$");
+    }
+
 }

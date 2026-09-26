@@ -6,10 +6,10 @@ public class Client
 
     public int Idade { get; set; }
 
-    public int Telefone { get; set; }
+    public string Telefone { get; set; }
 
 
-    public Client(string nome, string email, int idade, int telefone)
+    public Client(string nome, string email, int idade, string telefone)
     {
         Nome = nome;
         EMail = email;
