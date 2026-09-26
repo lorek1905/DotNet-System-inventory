@@ -7,4 +7,6 @@ public interface IPedidoRepository
     void RmvPedido(Pedido pedido);
 
     public Pedido BuscarPedido(int id);
+
+    public IReadOnlyList<Pedido> Listar();
 }

@@ -29,4 +29,9 @@ public class PedidoRepository : IPedidoRepository
         }
         return encontrado;
     }
+
+    public IReadOnlyList<Pedido> Listar()
+    {
+        return listaDePedidos;
+    }
 }

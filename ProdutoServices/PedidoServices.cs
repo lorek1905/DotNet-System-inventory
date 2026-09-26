@@ -22,4 +22,11 @@ public class PedidoServices
     {
         return pedidoRepository.BuscarPedido(id);
     }
+
+    public IReadOnlyList<Pedido> ListarPedidos()
+    {
+        return pedidoRepository.Listar();
+    }
+
+
 }

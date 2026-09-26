@@ -12,4 +12,6 @@ public interface IProdutoRepositoriy //aqui a gente não usa public class, usamo
     Produto Buscar(string nome);
 
     void AlteracaoEstoque(Produto produto, int quant);
+
+
 }
