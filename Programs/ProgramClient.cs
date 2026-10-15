@@ -9,9 +9,49 @@ public class ProgramClient
 
     public static void TestarCadastro()
     {
-        CadastrarCliente();
-    }
+        int opcao;
+        do
+        {
 
+            Console.WriteLine("===== Produtos =====");
+            Console.WriteLine();
+            Console.WriteLine("1 - Cadastrar Cliente");
+            Console.WriteLine("2 - Remover Cliente");
+            Console.WriteLine("3 - Listar Cliente");
+            Console.WriteLine("4 - Alterar E-mail");
+            Console.WriteLine("5 - Alterar Telefone");
+            Console.WriteLine("6 Sair");
+
+            while (!int.TryParse(Console.ReadLine(), out opcao) || opcao > 6 || opcao < 1)
+            {
+                Console.WriteLine("Valor invalido! Digite novamente.");
+            }
+
+
+            switch (opcao)
+            {
+                case 1:
+                    CadastrarCliente();
+                    break;
+                case 2:
+                    RemoverCliente();
+                    break;
+                case 3:
+                    ListarClientes();
+                    break;
+                case 4:
+                    AlterarEmail();
+                    break;
+                case 5:
+                    AlterarTel();
+                    break;
+                case 6:
+                    Console.WriteLine("Programa encerrado");
+                    break;
+            }
+
+        } while (opcao != 6);
+    }
     static void CadastrarCliente()
     {
         Console.WriteLine("Digite o nome do cliente");
@@ -70,7 +110,6 @@ public class ProgramClient
         }
 
     }
-
     static void RemoverCliente()
     {
         Console.WriteLine("Digite o E-mail do cliente que deseja remover: ");
@@ -113,7 +152,6 @@ public class ProgramClient
             }
         }
     }
-
     static void ListarClientes()
     {
         foreach (Client client in clientServices.ListarCliente())
@@ -121,7 +159,6 @@ public class ProgramClient
             MostrarCliente(client);
         }
     }
-
     static void AlterarEmail()
     {
         Console.WriteLine("Digite o E-mail do cliente: ");
@@ -150,7 +187,7 @@ public class ProgramClient
             Console.WriteLine("2 - NÃO");
 
             int opcao;
-            while (int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 2)
+            while (int.TryParse(Console.ReadLine(), out opcao) || opcao > 2 || opcao < 1)
             {
                 Console.WriteLine("Valor invalido! Digite novamente:");
             }
